@@ -6,7 +6,7 @@ meta_description: Jai Keerthi's blog
 ---
 
 <div id="home">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     <div class="main" style="clear:both;">
       <h2>
         <a href="{{post.url}}" style="text-decoration:none;">
@@ -20,4 +20,22 @@ meta_description: Jai Keerthi's blog
       </div>
     </div>
   {% endfor %}
+  <div class="pagination">
+    {% if paginator.next_page %}
+      <a href="/page{{ paginator.next_page }}" class="next" style="float: left">< Older</a>
+    {% else %}
+
+    {% endif %}
+
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        <a href="/" class="previous" style="float: right;">Newer ></a>
+      {% else %}
+        <a href="/page{{ paginator.previous_page }}" class="previous" style="float: right">Newer ></a>
+      {% endif %}
+    {% else %}
+
+    {% endif %}
+  </div>
 </div>
+<div style="clear:both"></div>

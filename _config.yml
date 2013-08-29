@@ -1,3 +1,4 @@
 name: Jai Keerthi
 markdown: redcarpet
 pygments: true
+paginate: 5
