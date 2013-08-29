@@ -13,9 +13,9 @@
 html, body { height: 100%; }
 
 body {
-  background-color: #FFF;
+  background-color: #EEEEEE;
   font: 13.34px Helvetica, Arial, sans-serif;
-  font-size: small;
+  font-family: lato;
   text-align: center;
 }
 
@@ -25,9 +25,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 { margin-bottom: 1em; }
 p { margin: 1em 0; }
 
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
+a, a:hover, a:visited {
+  color: black;
+}
+
+/* a         { color: #00a; } */
+/* a:hover   { color: #000; } */
+/* a:visited { color: #a0a; } */
 
 /*****************************************************************************/
 /*
@@ -45,7 +49,8 @@ ul.posts li {
 
 ul.posts span {
   color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
+  /* font-family: Monaco, "Courier New", monospace; */
+  font-family: lato;
   font-size: 80%;
 }
 
@@ -58,9 +63,13 @@ ul.posts span {
 .site {
   font-size: 115%;
   text-align: justify;
-  width: 42em;
+  width: 960px;
   margin: 3em auto 2em;
   line-height: 1.5em;
+}
+
+.site .header h1.title, .site .header ul.menu{
+  float: left;
 }
 
 .site .header a {
@@ -69,16 +78,37 @@ ul.posts span {
 }
 
 .site .header h1.title {
+  padding-top: 8px;
   display: inline-block;
   margin-bottom: 2em;
+  letter-spacing: 2px;
 }
 
 .site .header h1.title a {
+  font-size: 30px;
   color: #a00;
+  font-style: italics;
 }
 
 .site .header h1.title a:hover {
   color: #000;
+}
+
+.site ul.menu{
+  margin-left: 20px;
+}
+
+.site ul.menu li{
+  padding: 7px;
+  display: inline-block;
+  background: #d7d7d7;
+  list-style: none;
+  border: 1px solid #dcdbdb;
+  border-radius: 0;
+}
+.site ul.menu li a{
+  color: black;
+  text-decoration: none;
 }
 
 .site .header a.extra {
@@ -98,7 +128,7 @@ ul.posts span {
   font-size: 80%;
   color: #666;
   border-top: 4px solid #eee;
-  margin-top: 2em;
+  /* margin-top: 2em; */
   overflow: hidden;
 }
 
@@ -127,11 +157,39 @@ ul.posts span {
 /*
 /*****************************************************************************/
 
+.main{
+  background: white;
+  border: 1px solid #dcdbdb;
+  padding: 20px;
+}
+
+.main h2{
+  color: black;
+  font-size: 20px;
+}
+
+.main p.meta{
+  font-size: 13px;
+  color: #717171;
+  line-height: 15px;
+  margin-top: 5px;
+}
+
+.main .post{
+  color: #333333;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
 /* standard */
 .post pre {
   border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
+  background-color: #F5F5F5;
+  padding: 5px;
 }
 
 .post ul, .post ol {
@@ -140,7 +198,7 @@ ul.posts span {
 
 .post code {
   border: 1px solid #ddd;
-  background-color: #eef;
+  background-color: #F5F5F5;
   padding: 0 .2em;
 }
 
