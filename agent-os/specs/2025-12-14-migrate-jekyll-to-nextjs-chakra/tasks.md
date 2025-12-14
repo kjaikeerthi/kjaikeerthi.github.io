@@ -81,19 +81,19 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 2.0: Install and configure Chakra UI Pro
 **Description:** Integrate Chakra UI Pro component library and set up the theme system.
 
-- [ ] 2.1 Install Chakra UI Pro dependencies
+- [x] 2.1 Install Chakra UI Pro dependencies
   - Install `@chakra-ui/react` and `@chakra-ui/next-js` for Next.js 13+ App Router support
   - Install `@emotion/react` and `@emotion/styled` (required by Chakra)
   - Install `framer-motion` for animations
   - Verify Chakra UI Pro license and install Pro components package if separate
 
-- [ ] 2.2 Set up Chakra UI providers for App Router
+- [x] 2.2 Set up Chakra UI providers for App Router
   - Create `app/providers.tsx` with ChakraProvider
   - Wrap app in providers in `app/layout.tsx`
   - Configure Chakra UI cache provider for App Router SSR
   - Test that Chakra UI components render correctly
 
-- [ ] 2.3 Create custom Chakra UI theme
+- [x] 2.3 Create custom Chakra UI theme
   - Create `/styles/theme.ts` with custom theme configuration
   - Define color palette: primary (blue/purple for tech/AI), secondary (gray), accent colors
   - Configure typography scale with heading hierarchy (h1-h6) and body text styles
@@ -102,26 +102,26 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Configure focus states and keyboard navigation styles for accessibility
   - Ensure color contrast meets WCAG 2.1 AA standards
 
-- [ ] 2.4 Create global styles and CSS reset
+- [x] 2.4 Create global styles and CSS reset
   - Create `/styles/globals.css` with CSS reset
   - Add base styles for html, body, and common elements
   - Configure font loading (system fonts or web fonts)
   - Add print-specific styles for resume page
   - Import global styles in root layout
 
-- [ ] 2.5 Test Chakra UI integration
+- [x] 2.5 Test Chakra UI integration
   - Create a test page with various Chakra UI components
   - Verify theme customization applies correctly
   - Test responsive breakpoints work as expected
   - Verify dark mode is disabled (out of scope)
 
-- [ ] 2.6 Write 2-5 focused tests for Chakra UI setup
+- [x] 2.6 Write 2-5 focused tests for Chakra UI setup
   - Test that ChakraProvider renders without errors
   - Test that custom theme values are accessible
   - Test that responsive breakpoints work correctly
   - Verify component styling renders as expected
 
-- [ ] 2.7 Verify Chakra UI integration
+- [x] 2.7 Verify Chakra UI integration
   - Run `npm run build` to verify build with Chakra UI
   - Run the 2-5 tests written in 2.6
   - Visually test theme in browser

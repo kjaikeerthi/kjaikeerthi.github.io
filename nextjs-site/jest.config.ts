@@ -2,7 +2,7 @@ import type { Config } from 'jest';
 
 const config: Config = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
@@ -26,8 +26,20 @@ const config: Config = {
     '!**/out/**',
   ],
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { tsconfig: { esModuleInterop: true } }],
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          jsx: 'react',
+          esModuleInterop: true,
+          allowSyntheticDefaultImports: true,
+        },
+      },
+    ],
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(@chakra-ui|@emotion|framer-motion)/)',
+  ],
 };
 
 export default config;
