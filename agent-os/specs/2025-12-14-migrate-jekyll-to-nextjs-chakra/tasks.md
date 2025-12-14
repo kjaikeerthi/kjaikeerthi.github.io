@@ -144,7 +144,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 3.0: Build reusable layout components
 **Description:** Create the main layout structure including header, footer, and navigation.
 
-- [ ] 3.1 Create MainLayout component
+- [x] 3.1 Create MainLayout component
   - Create `/components/layouts/MainLayout.tsx`
   - Implement layout structure: header, main content area, footer
   - Use Chakra UI Box, Container, and Flex components
@@ -152,7 +152,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Ensure consistent max-width and centering for content
   - Make layout responsive for mobile, tablet, desktop
 
-- [ ] 3.2 Build Header component with navigation
+- [x] 3.2 Build Header component with navigation
   - Create `/components/Header.tsx`
   - Display site title/logo (link to homepage)
   - Create navigation menu: Home, Blog, About, Resume links
@@ -161,7 +161,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add subtle shadow/border on scroll
   - Highlight active page/route in navigation
 
-- [ ] 3.3 Implement responsive mobile navigation
+- [x] 3.3 Implement responsive mobile navigation
   - Create hamburger menu icon for mobile/tablet viewports (<768px)
   - Build mobile menu drawer/modal using Chakra UI Drawer or Menu
   - Ensure touch-friendly tap targets (min 44x44px)
@@ -169,7 +169,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Close menu on route navigation
   - Make menu accessible with keyboard navigation
 
-- [ ] 3.4 Build Footer component
+- [x] 3.4 Build Footer component
   - Create `/components/Footer.tsx`
   - Display copyright notice with current year
   - Add "Powered by Next.js" credit with link
@@ -178,7 +178,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Ensure responsive layout (stack on mobile)
   - Style with subtle background color/border
 
-- [ ] 3.5 Create BlogLayout component
+- [x] 3.5 Create BlogLayout component
   - Create `/components/layouts/BlogLayout.tsx`
   - Extend MainLayout with blog-specific features
   - Add container for blog post content with optimal reading width (600-700px)
@@ -186,7 +186,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add breadcrumb navigation (Home > Blog > Post Title)
   - Implement responsive layout that adapts for mobile
 
-- [ ] 3.6 Migrate and optimize social media icons
+- [x] 3.6 Migrate and optimize social media icons
   - Copy social media icons from Jekyll `/images/` to `/public/images/`
   - Create `/components/SocialLinks.tsx` component
   - Use Next.js Image component for optimized loading
@@ -194,7 +194,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Support icon sizing via props (32px default)
   - Add hover effects and transitions
 
-- [ ] 3.7 Write 3-6 focused tests for layout components
+- [x] 3.7 Write 3-6 focused tests for layout components
   - Test MainLayout renders header, main, footer correctly
   - Test Header navigation links are present and correct
   - Test mobile menu opens/closes on click
@@ -202,7 +202,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Test active route highlighting in navigation
   - Test responsive breakpoints for mobile menu
 
-- [ ] 3.8 Verify layout components
+- [x] 3.8 Verify layout components
   - Run the 3-6 tests written in 3.7
   - Visually test layouts in browser at different viewport sizes
   - Test keyboard navigation and accessibility
