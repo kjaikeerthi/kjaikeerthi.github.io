@@ -1,0 +1,41 @@
+task_groups:
+  - name: project-initialization-and-configuration
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: chakra-ui-pro-integration
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: core-layout-components
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: resume-data-structure-and-page
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: mdx-blog-architecture
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: enhanced-blog-post-features
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: content-migration-from-jekyll
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: homepage-landing-page
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: seo-and-performance-optimization
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
+  - name: deployment-and-build-configuration
+    claude_code_subagent: frontend-developer
+    standards:
+      - all
