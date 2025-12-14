@@ -436,7 +436,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 6.0: Add enhanced blog post features
 **Description:** Implement table of contents, syntax highlighting with copy buttons, related posts, and social sharing.
 
-- [ ] 6.1 Implement table of contents (TOC) generation
+- [x] 6.1 Implement table of contents (TOC) generation
   - Create `/components/blog/TableOfContents.tsx` component
   - Parse blog post headings (h2, h3) from MDX content
   - Generate TOC list with links to heading anchors
@@ -446,7 +446,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Position TOC in sidebar on desktop, above content on mobile
   - Highlight active section in TOC based on scroll position (optional)
 
-- [ ] 6.2 Set up code syntax highlighting
+- [x] 6.2 Set up code syntax highlighting
   - Install `shiki` (preferred) or `prismjs` for syntax highlighting
   - Configure supported languages: bash, ruby, javascript, typescript, python
   - Create `/components/mdx/CodeBlock.tsx` component
@@ -455,7 +455,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Style code blocks with theme matching site design
   - Ensure responsive design (horizontal scroll on mobile)
 
-- [ ] 6.3 Add copy-to-clipboard functionality for code blocks
+- [x] 6.3 Add copy-to-clipboard functionality for code blocks
   - Install `react-copy-to-clipboard` or implement custom copy function
   - Add "Copy" button to each code block (top-right corner)
   - Implement copy handler that copies code to clipboard
@@ -464,7 +464,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Ensure copy button is keyboard accessible
   - Style button with Chakra UI Button component
 
-- [ ] 6.4 Build related posts section
+- [x] 6.4 Build related posts section
   - Create `/components/blog/RelatedPosts.tsx` component
   - Use `getRelatedPosts()` utility to find related posts
   - Display 3-4 related posts at end of blog post
@@ -474,7 +474,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Use Chakra UI Card or Grid for layout
   - Show "No related posts" message if none found
 
-- [ ] 6.5 Create social sharing buttons
+- [x] 6.5 Create social sharing buttons
   - Create `/components/blog/SocialShare.tsx` component
   - Add sharing buttons for: Twitter, LinkedIn, Facebook
   - Generate share URLs with pre-populated text and post URL
@@ -484,7 +484,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Open share links in new window/tab
   - Ensure buttons are mobile-friendly (adequate size)
 
-- [ ] 6.6 Display comprehensive post metadata
+- [x] 6.6 Display comprehensive post metadata
   - Create `/components/blog/PostMetadata.tsx` component
   - Display at top of blog post: publish date, categories, tags, reading time
   - Format date nicely (e.g., "December 14, 2025")
@@ -493,14 +493,14 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Style with Chakra UI Badge, Text, HStack components
   - Ensure responsive layout
 
-- [ ] 6.7 Preserve original publish dates from Jekyll
+- [x] 6.7 Preserve original publish dates from Jekyll
   - Ensure date parsing from Jekyll posts preserves original dates
   - Display original publish date prominently
   - Format historical dates (2010-2011) correctly
   - No "last updated" dates unless explicitly added
   - Test that dates display correctly for all migrated posts
 
-- [ ] 6.8 Write 3-6 focused tests for enhanced blog features
+- [x] 6.8 Write 3-6 focused tests for enhanced blog features
   - Test TOC generates correctly from headings
   - Test code blocks have syntax highlighting applied
   - Test copy button copies code to clipboard
@@ -508,7 +508,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Test social share buttons generate correct URLs
   - Test post metadata displays all information
 
-- [ ] 6.9 Verify enhanced blog features
+- [x] 6.9 Verify enhanced blog features
   - Run the 3-6 tests written in 6.8
   - Visually test TOC navigation in browser
   - Test code block syntax highlighting and copy functionality
@@ -536,7 +536,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 7.0: Migrate Jekyll content to Next.js
 **Description:** Convert Jekyll blog posts to MDX format and migrate static assets while updating outdated links.
 
-- [ ] 7.1 Analyze existing Jekyll blog posts
+- [x] 7.1 Analyze existing Jekyll blog posts
   - Review all 3 blog posts in `_posts/` directory
   - Document frontmatter structure used in Jekyll
   - Identify Jekyll Liquid syntax to convert
@@ -544,7 +544,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Identify any broken or outdated external links
   - Note any inline HTML or custom styling
 
-- [ ] 7.2 Convert Jekyll blog posts to MDX format
+- [x] 7.2 Convert Jekyll blog posts to MDX format
   - Create MDX files in `/content/blog/` for each post
   - Convert Jekyll frontmatter to MDX-compatible format
   - Preserve: title, date, categories, meta_keywords, meta_description
@@ -553,7 +553,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Use proper language tags in code blocks (```bash, ```ruby, etc.)
   - Maintain original publish dates (2010-2011 dates)
 
-- [ ] 7.3 Update broken and outdated links in legacy posts
+- [x] 7.3 Update broken and outdated links in legacy posts
   - Review all external links in blog posts
   - Test links to verify they're still active
   - Update broken links to current URLs or archived versions
@@ -561,14 +561,14 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Update links to use HTTPS where applicable
   - Document any links that cannot be updated (add note in post)
 
-- [ ] 7.4 Migrate social media and static assets
+- [x] 7.4 Migrate social media and static assets
   - Copy images from Jekyll `/images/` to Next.js `/public/images/`
   - Verify: github.png, linkedin.png, twitter-x.png
   - Update image references in content to use `/images/` path
   - Ensure images are optimized (compress if large)
   - Test that images load correctly in Next.js
 
-- [ ] 7.5 Create new About page content
+- [x] 7.5 Create new About page content
   - Create `/app/about/page.tsx`
   - Write updated bio focusing on current role at Coducer Technologies
   - Highlight expertise: AI Agents, LLMs, Product Development, Architecture
@@ -578,13 +578,13 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Link to resume page and blog
   - Use Chakra UI layout components for responsive design
 
-- [ ] 7.6 Set up CNAME file for custom domain
+- [x] 7.6 Set up CNAME file for custom domain
   - Create `/public/CNAME` file
   - Add custom domain: `jaikeerthi.in`
   - Ensure file is included in static export build
   - Verify CNAME file is in correct location for GitHub Pages
 
-- [ ] 7.7 Verify content migration
+- [x] 7.7 Verify content migration
   - Test all 3 migrated blog posts render correctly
   - Verify frontmatter metadata displays properly
   - Test that code blocks have correct syntax highlighting
@@ -613,7 +613,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 8.0: Build developer portfolio landing page
 **Description:** Create a modern homepage with hero section, tech stack display, featured projects, and recent blog posts.
 
-- [ ] 8.1 Create hero section component
+- [x] 8.1 Create hero section component
   - Create `/components/home/HeroSection.tsx`
   - Display name: "Jai Keerthi" (large heading)
   - Display title: "AI Agents / LLM / Product / Architect"
@@ -623,7 +623,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add clear call-to-action buttons: "View Resume", "Read Blog", "Contact Me"
   - Style with gradient background or professional color scheme
 
-- [ ] 8.2 Build tech stack icons grid
+- [x] 8.2 Build tech stack icons grid
   - Create `/components/home/TechStack.tsx` component
   - Display technology icons/logos: TypeScript, Node.js, Next.js, React, Python, Ruby on Rails, Nest.js, FastAPI, LLM/AI frameworks
   - Use icon grid layout (3-4 columns mobile, 5-6 columns desktop)
@@ -632,7 +632,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Use Chakra UI Grid or SimpleGrid
   - Source icons from public domain or icon libraries (Devicons, Simple Icons)
 
-- [ ] 8.3 Create featured projects section
+- [x] 8.3 Create featured projects section
   - Create `/components/home/FeaturedProjects.tsx` component
   - Extract 3-4 notable projects from resume data: PrimeCLM, JOFIN, Ascent IMDR, Al Arabia BMS
   - Create project card component showing: title, brief description, tech stack, links
@@ -641,7 +641,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add hover effects on cards (lift, shadow, border highlight)
   - Link to project details or external URLs if available
 
-- [ ] 8.4 Build recent blog posts preview section
+- [x] 8.4 Build recent blog posts preview section
   - Create `/components/home/RecentPosts.tsx` component
   - Fetch latest 3 blog posts using blog utilities
   - Display post cards with: title, date, excerpt, "Read More" link
@@ -650,7 +650,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add "View All Posts" button linking to /blog
   - Ensure responsive design
 
-- [ ] 8.5 Assemble homepage with all sections
+- [x] 8.5 Assemble homepage with all sections
   - Create `/app/page.tsx` (root homepage)
   - Import and compose: HeroSection, TechStack, FeaturedProjects, RecentPosts
   - Add section headings: "Technologies", "Featured Projects", "Recent Blog Posts"
@@ -659,7 +659,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Ensure smooth transitions and animations
   - Add scroll-to-top button (optional)
 
-- [ ] 8.6 Implement responsive design for homepage
+- [x] 8.6 Implement responsive design for homepage
   - Test homepage on mobile (320px+), tablet (768px+), desktop (1024px+)
   - Adjust hero layout for mobile (stack vertically)
   - Optimize tech stack grid for small screens
@@ -667,7 +667,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Adjust typography sizes for readability on all devices
   - Test CTA buttons are touch-friendly on mobile
 
-- [ ] 8.7 Write 3-6 focused tests for homepage
+- [x] 8.7 Write 3-6 focused tests for homepage
   - Test homepage renders all sections
   - Test hero section displays name and title
   - Test tech stack icons are visible
@@ -675,7 +675,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Test recent posts fetch and display correctly
   - Test CTA buttons link to correct pages
 
-- [ ] 8.8 Verify homepage functionality
+- [x] 8.8 Verify homepage functionality
   - Run the 3-6 tests written in 8.7
   - Visually test homepage in browser
   - Test all CTA buttons navigate correctly

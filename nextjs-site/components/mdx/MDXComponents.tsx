@@ -7,6 +7,7 @@ import { Box, Heading, Text, Link, Code, Image, UnorderedList, OrderedList, List
 import NextLink from 'next/link';
 import NextImage from 'next/image';
 import { ReactNode } from 'react';
+import CodeBlock from './CodeBlock';
 
 interface MDXComponentProps {
   children?: ReactNode;
@@ -142,9 +143,10 @@ function CustomImage({ src, alt, ...props }: MDXComponentProps) {
 }
 
 /**
- * Custom code block component (basic version, enhanced in Group 6)
+ * Custom code component for inline code
  */
 function CustomCode({ children, className, ...props }: MDXComponentProps) {
+  // Inline code doesn't have className (language specified)
   const isInline = !className;
 
   if (isInline) {
@@ -162,30 +164,84 @@ function CustomCode({ children, className, ...props }: MDXComponentProps) {
     );
   }
 
-  // Code blocks will be enhanced in Group 6 with syntax highlighting
+  // Code blocks (with className) are handled by the pre component
+  // Return as-is, the pre wrapper will handle it
   return (
-    <Box
-      as="pre"
-      p={4}
-      bg="gray.50"
-      borderRadius="md"
-      overflowX="auto"
-      my={4}
-      border="1px"
-      borderColor="gray.200"
-      {...props}
-    >
-      <Code
-        display="block"
-        whiteSpace="pre"
-        bg="transparent"
-        p={0}
-        fontSize="0.9em"
-        fontFamily="mono"
-      >
-        {children}
-      </Code>
-    </Box>
+    <Code display="inline" {...props}>
+      {children}
+    </Code>
+  );
+}
+
+/**
+ * Custom pre component for code blocks
+ * Uses enhanced CodeBlock component with syntax highlighting
+ */
+function CustomPre({ children, ...props }: MDXComponentProps) {
+  // Extract code content and className from children
+  // MDX typically wraps code in <code className="language-xxx">content</code> inside <pre>
+  let codeContent = '';
+  let className = '';
+
+  // Handle different children formats
+  if (typeof children === 'string') {
+    codeContent = children;
+  } else if (Array.isArray(children)) {
+    // Find code element in children array
+    const codeElement = children.find(
+      (child) =>
+        typeof child === 'object' &&
+        child !== null &&
+        'type' in child &&
+        (child.type === 'code' || (child.type as any)?.displayName === 'code')
+    );
+
+    if (
+      codeElement &&
+      typeof codeElement === 'object' &&
+      'props' in codeElement
+    ) {
+      className = (codeElement.props?.className as string) || '';
+      codeContent =
+        typeof codeElement.props?.children === 'string'
+          ? codeElement.props.children
+          : String(codeElement.props?.children || '');
+    } else {
+      // Fallback: try to extract from first child
+      const firstChild = children[0];
+      if (
+        firstChild &&
+        typeof firstChild === 'object' &&
+        'props' in firstChild
+      ) {
+        className = (firstChild.props?.className as string) || '';
+        codeContent =
+          typeof firstChild.props?.children === 'string'
+            ? firstChild.props.children
+            : String(firstChild.props?.children || '');
+      } else {
+        codeContent = String(children);
+      }
+    }
+  } else if (
+    children &&
+    typeof children === 'object' &&
+    'props' in children
+  ) {
+    // Single code element
+    className = (children.props?.className as string) || '';
+    codeContent =
+      typeof children.props?.children === 'string'
+        ? children.props.children
+        : String(children.props?.children || '');
+  } else {
+    codeContent = String(children || '');
+  }
+
+  return (
+    <CodeBlock className={className} {...props}>
+      {codeContent}
+    </CodeBlock>
   );
 }
 
@@ -277,7 +333,7 @@ export const MDXComponents = {
   a: CustomLink,
   img: CustomImage,
   code: CustomCode,
-  pre: ({ children }: MDXComponentProps) => <>{children}</>,
+  pre: CustomPre,
   blockquote: CustomBlockquote,
   ul: CustomUnorderedList,
   ol: CustomOrderedList,

@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
-import { Container, Box, Heading, Text, HStack, Badge, VStack } from '@chakra-ui/react';
+import { Box, Heading, VStack, HStack, Flex } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { format } from 'date-fns';
 import Link from 'next/link';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -9,6 +8,11 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { getAllBlogPosts, getBlogPostBySlug } from '@/lib/blog';
 import { BlogPost } from '@/lib/blog.types';
 import MDXComponents from '@/components/mdx/MDXComponents';
+import BlogLayout from '@/components/layouts/BlogLayout';
+import TableOfContents from '@/components/blog/TableOfContents';
+import RelatedPosts from '@/components/blog/RelatedPosts';
+import SocialShare from '@/components/blog/SocialShare';
+import PostMetadata from '@/components/blog/PostMetadata';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -62,25 +66,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Format the date nicely
-  const formattedDate = format(new Date(post.date), 'MMMM dd, yyyy');
+  // Generate post URL for sharing
+  const postUrl = `/blog/${post.year}/${post.month}/${post.day}/${post.slug}`;
+
+  // Breadcrumbs for BlogLayout
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog' },
+    { label: post.title, href: postUrl },
+  ];
 
   return (
-    <Container maxW="container.md" py={8}>
+    <BlogLayout breadcrumbs={breadcrumbs}>
       <VStack align="stretch" spacing={8}>
-        {/* Breadcrumb Navigation */}
-        <Box fontSize="sm" color="gray.600">
-          <Link href="/" style={{ textDecoration: 'underline' }}>
-            Home
-          </Link>
-          {' > '}
-          <Link href="/blog" style={{ textDecoration: 'underline' }}>
-            Blog
-          </Link>
-          {' > '}
-          <Text as="span">{post.title}</Text>
-        </Box>
-
         {/* Post Header */}
         <Box>
           <Heading as="h1" size="2xl" mb={4}>
@@ -88,82 +86,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Heading>
 
           {/* Post Metadata */}
-          <HStack spacing={4} mb={4} flexWrap="wrap">
-            <Text color="gray.600">{formattedDate}</Text>
-            <Text color="gray.600">•</Text>
-            <Text color="gray.600">{post.readingTime}</Text>
-          </HStack>
-
-          {/* Categories */}
-          {post.categories.length > 0 && (
-            <HStack spacing={2} mb={2} flexWrap="wrap">
-              <Text fontSize="sm" color="gray.600" fontWeight="semibold">
-                Categories:
-              </Text>
-              {post.categories.map((category) => (
-                <Link key={category} href={`/blog?category=${category}`}>
-                  <Badge
-                    colorScheme="blue"
-                    fontSize="xs"
-                    cursor="pointer"
-                    _hover={{ transform: 'scale(1.05)' }}
-                  >
-                    {category}
-                  </Badge>
-                </Link>
-              ))}
-            </HStack>
-          )}
-
-          {/* Tags */}
-          {post.tags.length > 0 && (
-            <HStack spacing={2} flexWrap="wrap">
-              <Text fontSize="sm" color="gray.600" fontWeight="semibold">
-                Tags:
-              </Text>
-              {post.tags.map((tag) => (
-                <Link key={tag} href={`/blog?tag=${tag}`}>
-                  <Badge
-                    colorScheme="gray"
-                    variant="outline"
-                    fontSize="xs"
-                    cursor="pointer"
-                    _hover={{ transform: 'scale(1.05)' }}
-                  >
-                    #{tag}
-                  </Badge>
-                </Link>
-              ))}
-            </HStack>
-          )}
+          <PostMetadata post={post} />
         </Box>
 
-        {/* Post Content */}
-        <Box
-          className="blog-content"
-          fontSize="lg"
-          lineHeight="tall"
-          color="gray.800"
+        {/* Post Content with Table of Contents */}
+        <Flex
+          direction={{ base: 'column', lg: 'row' }}
+          gap={8}
+          align="flex-start"
         >
-          <MDXRemote
-            source={post.content}
-            components={MDXComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [
-                  rehypeSlug,
-                  [
-                    rehypeAutolinkHeadings,
-                    {
-                      behavior: 'wrap',
-                    },
+          {/* Main Content */}
+          <Box
+            as="article"
+            flex={1}
+            className="blog-content"
+            fontSize="lg"
+            lineHeight="tall"
+            color="gray.800"
+          >
+            <MDXRemote
+              source={post.content}
+              components={MDXComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [
+                    rehypeSlug,
+                    [
+                      rehypeAutolinkHeadings,
+                      {
+                        behavior: 'wrap',
+                      },
+                    ],
                   ],
-                ],
-              },
-            }}
-          />
-        </Box>
+                },
+              }}
+            />
+          </Box>
+
+          {/* Table of Contents Sidebar */}
+          <Box
+            display={{ base: 'block', lg: 'block' }}
+            w={{ base: '100%', lg: '250px' }}
+            flexShrink={0}
+          >
+            <TableOfContents />
+          </Box>
+        </Flex>
+
+        {/* Social Sharing */}
+        <SocialShare title={post.title} url={postUrl} description={post.excerpt} />
+
+        {/* Related Posts */}
+        <RelatedPosts post={post} maxPosts={4} />
 
         {/* Back to Blog Link */}
         <Box pt={8} borderTop="1px" borderColor="gray.200">
@@ -172,6 +147,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
         </Box>
       </VStack>
-    </Container>
+    </BlogLayout>
   );
 }
