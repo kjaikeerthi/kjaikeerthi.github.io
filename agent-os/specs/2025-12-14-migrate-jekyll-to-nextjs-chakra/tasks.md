@@ -327,7 +327,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
 #### Task 5.0: Set up MDX blog infrastructure
 **Description:** Configure MDX processing, content directory structure, and blog listing/detail pages.
 
-- [ ] 5.1 Install and configure MDX dependencies
+- [x] 5.1 Install and configure MDX dependencies
   - Install `next-mdx-remote` or `@next/mdx` for MDX processing
   - Install `gray-matter` for frontmatter parsing
   - Install `remark` and `rehype` plugins for markdown processing
@@ -335,13 +335,13 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Install `date-fns` for date formatting
   - Configure MDX in `next.config.js` if using @next/mdx
 
-- [ ] 5.2 Define blog post frontmatter schema
+- [x] 5.2 Define blog post frontmatter schema
   - Create `/lib/blog.types.ts` with TypeScript interfaces
   - Define `BlogPost` interface: title, date, slug, categories[], tags[], meta_description, meta_keywords, excerpt, content, readingTime
   - Define `BlogPostFrontmatter` interface for frontmatter-only data
   - Create validation schema for frontmatter (optional: use Zod)
 
-- [ ] 5.3 Create blog content utilities
+- [x] 5.3 Create blog content utilities
   - Create `/lib/blog.ts` with helper functions
   - Implement `getAllBlogPosts()` to read all MDX files from `/content/blog/`
   - Implement `getBlogPostBySlug(slug)` to get single post with parsed content
@@ -351,7 +351,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Add reading time calculation using `reading-time` library
   - Sort posts by date (newest first)
 
-- [ ] 5.4 Create blog listing page
+- [x] 5.4 Create blog listing page
   - Create `/app/blog/page.tsx`
   - Fetch all blog posts using `getAllBlogPosts()`
   - Display blog posts as cards with: title, date, excerpt, categories, tags
@@ -361,7 +361,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Show post count at top of page
   - Ensure responsive design
 
-- [ ] 5.5 Implement blog post pagination
+- [x] 5.5 Implement blog post pagination
   - Add pagination logic to blog listing page
   - Display 5-10 posts per page (match Jekyll pagination setting)
   - Create pagination controls: Previous, Next, page numbers
@@ -370,7 +370,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Disable/style Previous on page 1, Next on last page
   - Ensure pagination works with static export
 
-- [ ] 5.6 Add category and tag filtering
+- [x] 5.6 Add category and tag filtering
   - Create category/tag filter UI on blog listing page
   - Display all available categories and tags
   - Allow users to click category/tag to filter posts
@@ -379,7 +379,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Display filtered post count
   - Ensure filters work with pagination
 
-- [ ] 5.7 Create dynamic blog post page
+- [x] 5.7 Create dynamic blog post page
   - Create `/app/blog/[...slug]/page.tsx` for dynamic routes
   - Support Jekyll URL structure: `/2010/11/20/install-rails3-on-ubuntu/`
   - Parse slug to extract year, month, day, and post slug
@@ -389,7 +389,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Use BlogLayout for consistent layout
   - Add breadcrumb navigation
 
-- [ ] 5.8 Configure custom MDX components
+- [x] 5.8 Configure custom MDX components
   - Create `/components/mdx/` directory for custom MDX components
   - Create custom heading components (h1-h6) with anchor links
   - Create custom link component with external link handling
@@ -398,7 +398,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Create custom blockquote, list, and table components
   - Map components in MDX provider/renderer
 
-- [ ] 5.9 Write 4-8 focused tests for blog infrastructure
+- [x] 5.9 Write 4-8 focused tests for blog infrastructure
   - Test `getAllBlogPosts()` returns all posts sorted by date
   - Test `getBlogPostBySlug()` returns correct post
   - Test blog listing page renders post cards
@@ -408,7 +408,7 @@ This migration project transforms the existing Jekyll-based portfolio site into 
   - Test Jekyll URL structure routes correctly
   - Test reading time calculation is accurate
 
-- [ ] 5.10 Verify blog architecture
+- [x] 5.10 Verify blog architecture
   - Run the 4-8 tests written in 5.9
   - Manually test blog listing page in browser
   - Test pagination navigation

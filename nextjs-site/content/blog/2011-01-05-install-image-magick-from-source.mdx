@@ -1,0 +1,66 @@
+---
+title: Install ImageMagick from source
+date: 2011-01-05
+categories: rubygem imagemagick
+tags: imagemagick ubuntu installation linux
+meta_keywords: Install ImageMagick from source
+meta_description: Step-by-step guide to install ImageMagick 6.6.6-10 from source on Ubuntu 10.4 LTS
+excerpt: Lets start install ImageMagick 6.6.6-10 on Ubuntu 10.4 LTS from source with all required dependencies
+---
+
+Lets start install ImageMagick 6.6.6-10 on Ubuntu 10.4 LTS
+
+First remove existing version of ImageMagick if it was already installed.
+
+```bash
+sudo apt-get remove imagemagick
+```
+
+Update your machine with required application dependencies
+
+```bash
+sudo apt-get update
+sudo apt-get install libperl-dev gcc libjpeg62-dev libbz2-dev libtiff4-dev libwmf-dev libz-dev libpng12-dev libx11-dev libxt-dev libxext-dev libxml2-dev libfreetype6-dev liblcms1-dev libexif-dev perl libjasper-dev libltdl3-dev graphviz gs-gpl pkg-config
+```
+
+Get your latest source ImageMagick.tar.gz or select your download from Archive
+Download using
+
+```bash
+wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
+```
+
+extract source from tar using
+
+```bash
+tar -xzf ImageMagick.tar.gz
+cd ImageMagick-6.5.0-0
+```
+
+Just configure, compile, make and install using
+
+```bash
+./configure
+make
+sudo make install
+```
+
+Now image magick got installed in your ubuntu box, but you are need to add the following lines to ~/.bashrc
+
+```bash
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
+ImageMagick installation is now completed lets check them,
+
+```bash
+convert --version
+```
+
+The above comand will respond you
+
+```bash
+Version: ImageMagick 6.6.2-6 2010-12-02 Q16 http://www.imagemagick.org
+Copyright: Copyright (C) 1999-2010 ImageMagick Studio LLC
+Features: OpenMP
+```

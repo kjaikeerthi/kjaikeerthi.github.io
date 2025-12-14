@@ -9,8 +9,8 @@
 export interface BlogPostFrontmatter {
   title: string;
   date: string; // ISO date string (YYYY-MM-DD)
-  categories?: string[];
-  tags?: string[];
+  categories?: string[] | string;
+  tags?: string[] | string;
   meta_description?: string;
   meta_keywords?: string;
   excerpt?: string;
